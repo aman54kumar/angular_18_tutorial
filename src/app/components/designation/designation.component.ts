@@ -1,6 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { MasterService } from '../../services/master.service';
-import { APIResponseModel, IDesignation } from '../../model/interface/role';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-designation',
@@ -8,19 +6,6 @@ import { APIResponseModel, IDesignation } from '../../model/interface/role';
   templateUrl: './designation.component.html',
   styleUrl: './designation.component.css'
 })
-export class DesignationComponent implements OnInit {
+export class DesignationComponent {
 
-  designationList: IDesignation[] = [];
-  masterService = inject(MasterService);
-  isLoader: boolean = true;
-
-  ngOnInit(): void {
-    this.masterService.getDesignations().subscribe((result: APIResponseModel) => {
-      this.designationList = result.data;
-      this.isLoader = false;
-    }, error => {
-      alert("API Error/ Network Down")
-      this.isLoader = true;
-    })
-  }
 }
